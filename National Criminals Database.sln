@@ -3,8 +3,56 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{3FF4A3E0-D97B-49B1-9BD7-6B4352A3809F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUIClient", "WebClient\WebUIClient.csproj", "{1999EDD8-BDE2-43D9-89E0-671A156F39E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F924E8A5-3571-49F4-88F9-38CB5D83F27E} = {F924E8A5-3571-49F4-88F9-38CB5D83F27E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient.Tests", "WebClient.Tests\WebClient.Tests.csproj", "{DC30101C-6B10-4F18-988F-91E5CD37968F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessServices", "BusinessServices\BusinessServices.csproj", "{F924E8A5-3571-49F4-88F9-38CB5D83F27E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientContracts", "WebClientContracts\WebClientContracts.csproj", "{2B53CFCF-93DD-4654-8275-7FCEB4536928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCDServices", "NCDServices\NCDServices.csproj", "{BF80C4AC-02B0-4456-8674-8DE6C688E8E7}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF4A3E0-D97B-49B1-9BD7-6B4352A3809F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF4A3E0-D97B-49B1-9BD7-6B4352A3809F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF4A3E0-D97B-49B1-9BD7-6B4352A3809F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF4A3E0-D97B-49B1-9BD7-6B4352A3809F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1999EDD8-BDE2-43D9-89E0-671A156F39E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1999EDD8-BDE2-43D9-89E0-671A156F39E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1999EDD8-BDE2-43D9-89E0-671A156F39E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1999EDD8-BDE2-43D9-89E0-671A156F39E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC30101C-6B10-4F18-988F-91E5CD37968F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC30101C-6B10-4F18-988F-91E5CD37968F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC30101C-6B10-4F18-988F-91E5CD37968F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC30101C-6B10-4F18-988F-91E5CD37968F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F924E8A5-3571-49F4-88F9-38CB5D83F27E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F924E8A5-3571-49F4-88F9-38CB5D83F27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F924E8A5-3571-49F4-88F9-38CB5D83F27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F924E8A5-3571-49F4-88F9-38CB5D83F27E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B53CFCF-93DD-4654-8275-7FCEB4536928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B53CFCF-93DD-4654-8275-7FCEB4536928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B53CFCF-93DD-4654-8275-7FCEB4536928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B53CFCF-93DD-4654-8275-7FCEB4536928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF80C4AC-02B0-4456-8674-8DE6C688E8E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF80C4AC-02B0-4456-8674-8DE6C688E8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF80C4AC-02B0-4456-8674-8DE6C688E8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF80C4AC-02B0-4456-8674-8DE6C688E8E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Validation.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Validation.Integration.WCF.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal

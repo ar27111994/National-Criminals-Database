@@ -1,0 +1,119 @@
+﻿@model WebUIClient.ViewModels.Criminal
+
+
+
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+    
+        <div class="form-horizontal">
+            <h4>Criminal</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.NationalityID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.NationalityID, (SelectList)ViewData["Nationalites"], new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NationalityID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.HieghtMin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HieghtMin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HieghtMin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.HieghtMax, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HieghtMax, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HieghtMax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.WeightMin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WeightMin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.WeightMin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.WeightMax, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WeightMax, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.WeightMax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.AgeMin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AgeMin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AgeMin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+          <h2><a href="#" id="addField">Add another Email</a></h2>
+            <div class="form-group" id="uploads">
+              <p>
+                <label for="email"><input type="text" id="email" name="emails[]" required /></label>
+              </p>
+            </div>
+          <div class="form-group">
+            <div class="col-md-10">
+              <input type="submit" name="Search" value="Search" />
+            </div>
+          </div>
+
+        </div>
+    </div>
+ 
+
+    }
+@section Scripts {
+  <script>
+    $(function () {
+      var uploadsDiv = $('#uploads');
+      var i = $('#uploads p').length + 1;
+
+      $('#addField').click(function () {
+        $('<p><label for="pic"><input type="file" id="pic" name="pic[]" required/></label> <a href="#" id="remField">Remove</a></p>').appendTo(uploadsDiv);
+        i++;
+        return false;
+      });
+
+      $('#uploads').on('click', '#remField', (function (e) {
+        if (i > 2) {
+          $('#remField').parents('p').remove();
+          i--;
+        }
+        return false;
+
+      }));
+    });
+  </script>
+  @Scripts.Render("~/bundles/jqueryval")
+}
+
+

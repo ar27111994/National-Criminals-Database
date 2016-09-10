@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7e9ce58e-5635-4d0a-bbea-b61cce33588c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:7742/NationalityService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="NationalityService.disco" MetadataType="Disco" ID="a167a657-785b-4671-b758-e418c1648fa4" SourceId="1" SourceUrl="http://localhost:7742/NationalityService.svc?disco" />
+    <MetadataFile FileName="NationalityService.wsdl" MetadataType="Wsdl" ID="66802083-948d-414f-bdae-335c711191a9" SourceId="1" SourceUrl="http://localhost:7742/NationalityService.svc?wsdl" />
+    <MetadataFile FileName="NationalityService.xsd" MetadataType="Schema" ID="0e904d37-577f-4814-9079-361508afa991" SourceId="1" SourceUrl="http://localhost:7742/NationalityService.svc?xsd=xsd0" />
+    <MetadataFile FileName="NationalityService1.xsd" MetadataType="Schema" ID="0cb62c62-8c5a-47ce-b7c6-f0a137513490" SourceId="1" SourceUrl="http://localhost:7742/NationalityService.svc?xsd=xsd1" />
+    <MetadataFile FileName="NationalityService2.xsd" MetadataType="Schema" ID="ac00852f-6438-4d13-a91f-a295900c1e05" SourceId="1" SourceUrl="http://localhost:7742/NationalityService.svc?xsd=xsd2" />
+    <MetadataFile FileName="NationalityService3.xsd" MetadataType="Schema" ID="af371575-7f75-4ae6-80e4-b6d6ebf26269" SourceId="1" SourceUrl="http://localhost:7742/NationalityService.svc?xsd=xsd3" />
+    <MetadataFile FileName="NationalityService4.xsd" MetadataType="Schema" ID="de7fbd7d-7d32-467d-804e-a107f684db68" SourceId="1" SourceUrl="http://localhost:7742/NationalityService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

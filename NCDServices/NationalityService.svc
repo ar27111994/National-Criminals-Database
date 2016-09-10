@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Service="BusinessServices.INationalityService, BusinessServices" Factory="Autofac.Integration.Wcf.AutofacServiceHostFactory, Autofac.Integration.Wcf" %>

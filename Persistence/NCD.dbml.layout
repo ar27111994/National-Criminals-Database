@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="NCD">
+  <DataContextMoniker Name="/NCDDataContext" />
+  <nestedChildShapes>
+    <classShape Id="491a4f4e-b7c5-44ff-9f33-1d48dded3d6c" absoluteBounds="0.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/NCDDataContext/Criminal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c7d9d4f0-987f-4880-b27a-75b142d2b6d5" absoluteBounds="0.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0ecf756-50a4-486b-a085-83c38c3d9707" absoluteBounds="3.75, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NCDDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="30498de2-ada6-4cbe-a312-d60abdb581df" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb5c1082-de1f-4138-9e86-132c7944d456" absoluteBounds="3.75, 3.75, 2, 1.193992513020834">
+      <DataClassMoniker Name="/NCDDataContext/Nationality" />
+      <nestedChildShapes>
+        <elementListCompartment Id="60b1bba5-2ead-4da5-bd45-a12dc1956acf" absoluteBounds="3.765, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2405beca-7cc9-4dfb-9258-6736b11b0349" absoluteBounds="0.75, 5.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/NCDDataContext/Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e933dff-2e02-47bf-86a2-0fd37200fb29" absoluteBounds="0.765, 6.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.75 : 2.7131982421875); (3.375 : 3.0881982421875); (3.375 : 6.34699625651042); (2.75 : 6.34699625651042)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NCDDataContext/User/User_Role" />
+      <nodes>
+        <classShapeMoniker Id="b0ecf756-50a4-486b-a085-83c38c3d9707" />
+        <classShapeMoniker Id="2405beca-7cc9-4dfb-9258-6736b11b0349" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 3.48240397135417); (1.75 : 4.34699625651042); (3.29166666666667 : 4.34699625651042 : JumpStart); (3.45833333333333 : 4.34699625651042 : JumpEnd); (3.75 : 4.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NCDDataContext/Criminal/Criminal_Nationality" />
+      <nodes>
+        <classShapeMoniker Id="491a4f4e-b7c5-44ff-9f33-1d48dded3d6c" />
+        <classShapeMoniker Id="eb5c1082-de1f-4138-9e86-132c7944d456" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

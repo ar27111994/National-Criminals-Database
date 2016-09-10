@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NCD" Class="NCDDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ANE\AE;Initial Catalog=NCD;Integrated Security=True" SettingsObjectName="Persistence.Properties.Settings" SettingsPropertyName="NCDConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Criminals" Member="Criminals">
+    <Type Name="Criminal">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Sex" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="NationalityID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="HieghtMin" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="HieghtMax" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="WeightMin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WeightMax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgeMin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgeMax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Criminal_Nationality" Member="Nationalities" ThisKey="NationalityID" OtherKey="Id" Type="Nationality" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastLogin" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="User_Role" Member="Roles" ThisKey="RoleID" OtherKey="Id" Type="Role" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nationalities" Member="Nationalities">
+    <Type Name="Nationality">
+      <Column Name="Id" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NationalityName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Criminal_Nationality" Member="Criminal" ThisKey="Id" OtherKey="NationalityID" Type="Criminal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Role">
+      <Column Name="Id" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="User_Role" Member="User" ThisKey="Id" OtherKey="RoleID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
