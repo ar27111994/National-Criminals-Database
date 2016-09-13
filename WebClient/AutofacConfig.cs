@@ -7,7 +7,6 @@ using WebUIClient.RoleServiceReference;
 using WebUIClient.NationalityServiceReference;
 using AutoMapper;
 using WebUIClient.MapperConfig;
-using BusinessServices.MapperConfig;
 using System.ServiceModel;
 
 namespace WebUIClient
@@ -21,7 +20,7 @@ namespace WebUIClient
             //Register WCF Services
             builder
               .Register(c => new ChannelFactory<IUserService>(
-                new BasicHttpBinding(),
+                new WebHttpBinding(),
                 new EndpointAddress("https://localhost:7743/UserService.svc")))
               .SingleInstance();
 
@@ -33,7 +32,7 @@ namespace WebUIClient
 
             builder
               .Register(c => new ChannelFactory<ICriminalService>(
-                new BasicHttpBinding(),
+                new WebHttpBinding(),
                 new EndpointAddress("http://localhost:7742/CriminalService.svc")))
               .SingleInstance();
 
@@ -46,7 +45,7 @@ namespace WebUIClient
 
             builder
               .Register(c => new ChannelFactory<IRoleService>(
-                new BasicHttpBinding(),
+                new WebHttpBinding(),
                 new EndpointAddress("http://localhost:7742/RoleService.svc")))
               .SingleInstance();
 
@@ -59,7 +58,7 @@ namespace WebUIClient
 
             builder
               .Register(c => new ChannelFactory<INationalityService>(
-                new BasicHttpBinding(),
+                new WebHttpBinding(),
                 new EndpointAddress("http://localhost:7742/NationalityService.svc")))
               .SingleInstance();
 

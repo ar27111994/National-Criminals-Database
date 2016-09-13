@@ -78,6 +78,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -180,31 +181,28 @@
     <Content Include="Properties\DataSources\WebClientContracts.CriminalDTO.datasource" />
     <Content Include="Properties\DataSources\WebClientContracts.RoleDTO.datasource" />
     <Content Include="Properties\DataSources\WebClientContracts.NationalityDTO.datasource" />
-    <None Include="Service References\CriminalServiceReference\CriminalService.wsdl" />
-    <None Include="Service References\CriminalServiceReference\CriminalService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\CriminalService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\CriminalService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\CriminalService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\CriminalService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CriminalServiceReference\CriminalService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\NationalityServiceReference\NationalityService.disco" />
-    <None Include="Service References\NationalityServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\NationalityServiceReference\configuration.svcinfo" />
-    <None Include="Service References\NationalityServiceReference\Reference.svcmap">
+    <None Include="Service References\CriminalServiceReference\CriminalService.disco" />
+    <None Include="Service References\CriminalServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\CriminalServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CriminalServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\NationalityServiceReference\NationalityService.wsdl" />
+    <None Include="Service References\NationalityServiceReference\NationalityService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NationalityServiceReference\NationalityService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NationalityServiceReference\NationalityService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NationalityServiceReference\NationalityService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NationalityServiceReference\NationalityService4.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RoleServiceReference\RoleService.wsdl" />
     <None Include="Service References\RoleServiceReference\RoleService.xsd">
@@ -236,10 +234,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\CriminalServiceReference\CriminalService.disco" />
-    <None Include="Service References\CriminalServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\CriminalServiceReference\configuration.svcinfo" />
-    <None Include="Service References\CriminalServiceReference\Reference.svcmap">
+    <None Include="Service References\NationalityServiceReference\NationalityService.disco" />
+    <None Include="Service References\NationalityServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\NationalityServiceReference\configuration.svcinfo" />
+    <None Include="Service References\NationalityServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -261,20 +259,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Criminals\Search.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <None Include="Service References\NationalityServiceReference\NationalityService.wsdl" />
-    <None Include="Service References\NationalityServiceReference\NationalityService.xsd">
+    <None Include="Service References\CriminalServiceReference\CriminalService.wsdl" />
+    <None Include="Service References\CriminalServiceReference\CriminalService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NationalityServiceReference\NationalityService1.xsd">
+    <None Include="Service References\CriminalServiceReference\CriminalService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NationalityServiceReference\NationalityService2.xsd">
+    <None Include="Service References\CriminalServiceReference\CriminalService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NationalityServiceReference\NationalityService3.xsd">
+    <None Include="Service References\CriminalServiceReference\CriminalService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NationalityServiceReference\NationalityService4.xsd">
+    <None Include="Service References\CriminalServiceReference\CriminalService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserServiceReference\UserService.wsdl" />
@@ -303,6 +301,9 @@
     <Content Include=".bowerrc" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Account\Register.cshtml" />
+    <None Include="Service References\CriminalServiceReference\CriminalService.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
