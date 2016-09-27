@@ -90,7 +90,7 @@ namespace WebUIClient.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        private ActionResult Login(Login login)
+        public ActionResult Login(Login login)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace WebUIClient.Controllers
                         return RedirectToAction("Search", "Criminals");
                     }
                 }
-                return View();
+                return View(login);
             }
             catch (FaultException<WebUIClient.UserServiceReference.ValidationFault> ex)
             {

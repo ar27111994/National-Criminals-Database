@@ -82,12 +82,10 @@
     <Compile Include="IRoleService.cs" />
     <Compile Include="ISendMailThread.cs" />
     <Compile Include="IUserService.cs" />
-    <Compile Include="MapperConfig\AutoMapBootstrap.cs" />
     <Compile Include="MapperConfig\AutomapperModule.cs" />
-    <Compile Include="MapperConfig\AutoMapServiceBehaviour.cs" />
     <Compile Include="MapperConfig\DtoToEntityProfile.cs" />
     <Compile Include="MapperConfig\EntityToDtoProfile.cs" />
-    <Compile Include="MapperConfig\TableToDTO.cs" />
+    <Compile Include="MapperConfig\MapperExtensions.cs" />
     <Compile Include="NationalityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleService.cs" />

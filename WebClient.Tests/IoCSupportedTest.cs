@@ -1,19 +1,25 @@
 ﻿using Autofac;
-using Autofac.Integration.Mvc;
-using System.Web.Mvc;
-using WebUIClient.UserServiceReference;
-using WebUIClient.CriminalServiceReference;
-using WebUIClient.RoleServiceReference;
-using WebUIClient.NationalityServiceReference;
+using Autofac.Core;
 using AutoMapper;
-using WebUIClient.MapperConfig;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+using WebUIClient.CriminalServiceReference;
+using WebUIClient.NationalityServiceReference;
+using WebUIClient.RoleServiceReference;
+using WebUIClient.UserServiceReference;
+using WebUIClient.MapperConfig;
 
-namespace WebUIClient
+namespace WebClients.Tests
 {
-    public class AutofacConfig
+    public class IoCSupportedTest
     {
-        public static void ConfigureContainer()
+        private IContainer container;
+
+        public IoCSupportedTest()
         {
             var builder = new ContainerBuilder();
 
@@ -68,14 +74,7 @@ namespace WebUIClient
 
 
             builder.RegisterType<NationalityServiceClient>().As<INationalityService>();
-            // Register dependencies in controllers
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            // Register dependencies in filter attributes
-            builder.RegisterFilterProvider();
-
-            // Register dependencies in custom views
-            builder.RegisterSource(new ViewRegistrationSource());
 
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {
@@ -83,10 +82,17 @@ namespace WebUIClient
             });
             var mapper = mapperConfiguration.CreateMapper();
             builder.RegisterInstance(mapper).As<IMapper>();
-            var container = builder.Build();
+            container = builder.Build();
+        }
 
-            // Set MVC DI resolver to use our Autofac container
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        protected TEntity Resolve<TEntity>()
+        {
+            return container.Resolve<TEntity>();
+        }
+
+        protected void ShutdownIoC()
+        {
+            container.Dispose();
         }
     }
 }

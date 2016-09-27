@@ -39,5 +39,36 @@
       <wsdl:fault wsaw:Action="http://tempuri.org/IRoleService/GetRolesValidationFaultFault" name="ValidationFaultFault" message="tns:IRoleService_GetRoles_ValidationFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:service name="RoleService" />
+  <wsdl:binding name="BasicHttpBinding_IRoleService" type="tns:IRoleService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://tempuri.org/IRoleService/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <soap:operation soapAction="http://tempuri.org/IRoleService/GetRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RoleService">
+    <wsdl:port name="BasicHttpBinding_IRoleService" binding="tns:BasicHttpBinding_IRoleService">
+      <soap:address location="http://localhost:7742/RoleService.svc" />
+    </wsdl:port>
+  </wsdl:service>
 </wsdl:definitions>

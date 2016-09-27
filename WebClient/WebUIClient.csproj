@@ -227,17 +227,17 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\RoleServiceReference\RoleService.disco" />
-    <None Include="Service References\RoleServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\RoleServiceReference\configuration.svcinfo" />
-    <None Include="Service References\RoleServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Service References\NationalityServiceReference\NationalityService.disco" />
     <None Include="Service References\NationalityServiceReference\configuration91.svcinfo" />
     <None Include="Service References\NationalityServiceReference\configuration.svcinfo" />
     <None Include="Service References\NationalityServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RoleServiceReference\RoleService.disco" />
+    <None Include="Service References\RoleServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\RoleServiceReference\configuration.svcinfo" />
+    <None Include="Service References\RoleServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

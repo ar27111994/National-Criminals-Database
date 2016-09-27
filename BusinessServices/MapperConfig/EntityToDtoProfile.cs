@@ -13,10 +13,10 @@ namespace BusinessServices.MapperConfig
     {
         public EntityToDtoProfile()
         {
-            CreateMap<User, UserDTO>().IgnoreAllNonExisting();
-            CreateMap<Role, RoleDTO>().IgnoreAllNonExisting();
-            CreateMap<Criminal, CriminalDTO>().IgnoreAllNonExisting();
-            CreateMap<Nationality, NationalityDTO>().IgnoreAllNonExisting();
+            CreateMap<User, UserDTO>(MemberList.None);
+            CreateMap<Role, RoleDTO>(MemberList.None);
+            CreateMap<Criminal, CriminalDTO>(MemberList.None);
+            CreateMap<Nationality, NationalityDTO>(MemberList.None);
         }
     }
 }

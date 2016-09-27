@@ -16,6 +16,11 @@ namespace BusinessServices
     public class UserService : IUserService
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
+        public UserService(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public bool Authenticate(string password, string email)
         {
             string Email = Encrypt(email);
@@ -32,7 +37,7 @@ namespace BusinessServices
 
         public void Register(UserDTO user)
         {
-            User regUser = Mapper.Map<User>(user);
+            User regUser = _mapper.Map<User>(user);
             regUser.Email = Encrypt(regUser.Email);
             regUser.Password = Encrypt(regUser.Password);
             unitOfWork.UserRepository.InsertOnSubmit(regUser);
@@ -52,6 +57,7 @@ namespace BusinessServices
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
+        private IMapper _mapper;
 
         protected virtual void Dispose(bool disposing)
         {

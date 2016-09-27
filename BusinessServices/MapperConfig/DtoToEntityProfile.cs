@@ -13,24 +13,10 @@ namespace BusinessServices.MapperConfig
     {
         public DtoToEntityProfile()
         {
-            CreateMap<UserDTO, User>().ForAllMembers(opt => opt.Condition(srs => srs != null));
-            CreateMap<RoleDTO, Role>().ForAllMembers(opt => opt.Condition(srs => srs != null));
-            CreateMap<CriminalDTO, Criminal>().ForAllMembers(opt => opt.Condition(srs => srs != null));
-            CreateMap<NationalityDTO, Nationality>().ForAllMembers(opt => opt.Condition(srs => srs != null));
-        }
-    }
-    public static class AutoMapperExtensions
-    {
-        public static IMappingExpression<TSource, TDestination> IgnoreAllNonExisting<TSource, TDestination>(this IMappingExpression<TSource, TDestination> expression)
-        {
-            var sourceType = typeof(TSource);
-            var destinationType = typeof(TDestination);
-            var existingMaps = Mapper.Instance.ConfigurationProvider.GetAllTypeMaps().First(x => x.SourceType.Equals(sourceType) && x.DestinationType.Equals(destinationType));
-            foreach (var property in existingMaps.GetUnmappedPropertyNames())
-            {
-                expression.ForMember(property, opt => opt.Ignore());
-            }
-            return expression;
+            CreateMap<UserDTO, User>(MemberList.None);
+            CreateMap<RoleDTO, Role>(MemberList.None);
+            CreateMap<CriminalDTO, Criminal>(MemberList.None);
+            CreateMap<NationalityDTO, Nationality>(MemberList.None);
         }
     }
 }

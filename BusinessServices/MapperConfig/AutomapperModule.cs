@@ -19,10 +19,8 @@ namespace BusinessServices.MapperConfig
                 var config = new MapperConfiguration(x =>
                 {
                     // Load in all our AutoMapper profiles that have been registered
-                    foreach (var profile in profiles)
-                    {
-                        x.AddProfile(profile);
-                    }
+                    x.AddProfile(new DtoToEntityProfile());
+                    x.AddProfile(new EntityToDtoProfile());
                 });
 
                 return config;

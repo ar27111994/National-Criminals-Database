@@ -11,10 +11,8 @@
 namespace WebUIClient.RoleServiceReference {
     using System.Runtime.Serialization;
     using System;
-    using System.ServiceModel;
-    using System.ServiceModel.Web;
-    using WebClientContracts;
-    using System.Collections.Generic;
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ValidationFault", Namespace="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation")]
@@ -141,23 +139,19 @@ namespace WebUIClient.RoleServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RoleServiceReference.IRoleService")]
     public interface IRoleService {
-
-        [OperationContract]
-        [FaultContract(typeof(ValidationFault))]
-        [WebInvoke(UriTemplate = "", Method = "POST")]
-        void Create(RoleDTO role);
-
-        [OperationContract]
-        [FaultContract(typeof(ValidationFault))]
-        [WebGet(UriTemplate = "")]
-        RoleDTO[] GetRoles();
-
-        [OperationContract]
-
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService/Create", ReplyAction="http://tempuri.org/IRoleService/CreateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(WebUIClient.RoleServiceReference.ValidationFault), Action="http://tempuri.org/IRoleService/CreateValidationFaultFault", Name="ValidationFault", Namespace="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation")]
+        void Create(WebClientContracts.RoleDTO role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService/Create", ReplyAction="http://tempuri.org/IRoleService/CreateResponse")]
         System.Threading.Tasks.Task CreateAsync(WebClientContracts.RoleDTO role);
         
-
-        [OperationContract]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService/GetRoles", ReplyAction="http://tempuri.org/IRoleService/GetRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(WebUIClient.RoleServiceReference.ValidationFault), Action="http://tempuri.org/IRoleService/GetRolesValidationFaultFault", Name="ValidationFault", Namespace="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation")]
+        WebClientContracts.RoleDTO[] GetRoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService/GetRoles", ReplyAction="http://tempuri.org/IRoleService/GetRolesResponse")]
         System.Threading.Tasks.Task<WebClientContracts.RoleDTO[]> GetRolesAsync();
     }
     
@@ -167,8 +161,7 @@ namespace WebUIClient.RoleServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class RoleServiceClient : System.ServiceModel.ClientBase<WebUIClient.RoleServiceReference.IRoleService>, IRoleService
-    {
+    public partial class RoleServiceClient : System.ServiceModel.ClientBase<WebUIClient.RoleServiceReference.IRoleService>, WebUIClient.RoleServiceReference.IRoleService {
         
         public RoleServiceClient() {
         }

@@ -9,18 +9,18 @@ using WebUIClient.ViewModels;
 
 namespace WebUIClient.MapperConfig
 {
-    internal class NCDProfile:Profile
+    public class NCDProfile:Profile
     {
         public NCDProfile()
         {
-            CreateMap<UserDTO, User>();
-            CreateMap<RoleDTO, Role>();
-            CreateMap<CriminalDTO, Criminal>();
-            CreateMap<NationalityDTO, Nationality>();
-            CreateMap<User, UserDTO>();
-            CreateMap<Role, RoleDTO>();
-            CreateMap<Criminal, CriminalDTO>();
-            CreateMap<Nationality, NationalityDTO>();
+            CreateMap<UserDTO, User>(MemberList.None);
+            CreateMap<RoleDTO, Role>(MemberList.None);
+            CreateMap<CriminalDTO, Criminal>(MemberList.None);
+            CreateMap<NationalityDTO, Nationality>(MemberList.None);
+            CreateMap<User, UserDTO>(MemberList.None);
+            CreateMap<Role, RoleDTO>(MemberList.None);
+            CreateMap<Criminal, CriminalDTO>(MemberList.None);
+            CreateMap<Nationality, NationalityDTO>(MemberList.None);
         }
     }
 }
