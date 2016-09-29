@@ -3,7 +3,6 @@ A WCF Project explaining ASP.NET MVC and WCF best Practices using N-Layered Arch
 
 # BusinessServices:-
 A WCF Class Library Project Containing All the Service Interfaces and their respective Implementations. In Addition, this Project uses Automapper to Map Database Entities to Data Transfer Objects and Vise Versa.Therefore, this project also uses **Autofac.Wcf** for **Automapper Constructor Injection** in Service Classess.
-
 **Referenced Projects**: WebClientContracts, Persistence.
 
 # Persistence:-
@@ -13,7 +12,8 @@ This is the Data Access Layer using **Linq to SQL** as a Micro-ORM. This is abst
 A Project for Holding Data Transfer Object Classess. Moreover, this project uses ``Microsoft.Practices.EnterpriseLibrary.Validation`` for Validation of DTOs using WCF Service Calls. This project as a bridge between **BusinessServices** and **WebUIClient** Projects.
 
 # NCDServices:-
-A WCF Services Host Project. It uses **Autofac.WCF.Integration** to inject Required Parameters in Services and to Register Service Interfaces with the Respective Implementations. As this Project uses **Global.asax** to Register Autofac Container at **Application_Start** Event, Hence IIS is the best platform to Publish this project to.
+A WCF Services Host Project. It uses **Autofac.WCF.Integration** to inject Required Parameters in Services and to Register Service Interfaces with the Respective Implementations. As this Project uses **Global.asax** to Register Autofac Container at **Application_Start** Event, Hence IIS is the best platform to Publish this project to. Moreover, each service has Different **EndPoints** for **SOAP and REST (Both JSON and XML)**. 
+
 
 #WebUIClient:
 The Client for Consuming Web Services hosted on IIS. It also uses ``Microsoft.Practices.EnterpriseLibrary.Validation`` to handle Exceptions that can occur on Validation Fault of a DTO which is being transferred to / from WCF Services.
