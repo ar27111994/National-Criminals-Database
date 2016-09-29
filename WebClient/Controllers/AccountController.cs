@@ -90,20 +90,20 @@ namespace WebUIClient.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Login login)
+        public ActionResult Login(Login loginViewModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    bool Authenticated = UserService.Authenticate(login.Password, login.Password);
+                    bool Authenticated = UserService.Authenticate(loginViewModel.Password, loginViewModel.Email);
                     if (Authenticated)
                     {
-                        FormsAuthentication.SetAuthCookie(login.Email, true);
+                        FormsAuthentication.SetAuthCookie(loginViewModel.Email, true);
                         return RedirectToAction("Search", "Criminals");
                     }
                 }
-                return View(login);
+                return View(loginViewModel);
             }
             catch (FaultException<WebUIClient.UserServiceReference.ValidationFault> ex)
             {

@@ -49,6 +49,10 @@
       <HintPath>..\packages\Autofac.Wcf.4.0.0\lib\net45\Autofac.Integration.Wcf.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -70,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CriminalService.svc" />
+    <Content Include="Global.asax" />
     <Content Include="NationalityService.svc" />
     <Content Include="RoleService.svc" />
     <Content Include="UserService.svc" />
@@ -78,7 +83,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\StartUp.cs" />
+    <Compile Include="AutofacContainerBuilder.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

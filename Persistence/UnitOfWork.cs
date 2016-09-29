@@ -11,7 +11,7 @@ namespace Persistence
         public NCDDataContext Database = new NCDDataContext();
         private Repository<User> userRepository;
         private Repository<Role> roleRepository;
-        private Repository<Criminal> criminalRepository;
+        private CriminalsRepository criminalRepository;
         private Repository<Nationality> nationalityRepository;
         private bool disposed;
 
@@ -39,14 +39,14 @@ namespace Persistence
                 return roleRepository;
             }
         }
-        public Repository<Criminal> CriminalRepository
+        public CriminalsRepository CriminalRepository
         {
             get
             {
 
                 if (criminalRepository == null)
                 {
-                    criminalRepository = new Repository<Criminal>(Database);
+                    criminalRepository = new CriminalsRepository(Database);
                 }
                 return criminalRepository;
             }

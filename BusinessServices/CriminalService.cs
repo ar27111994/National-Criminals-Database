@@ -5,6 +5,7 @@ using iTextSharp.text.pdf;
 using Persistence;
 using System;
 using System.Collections.Generic;
+using System.Data.Linq.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
@@ -41,13 +42,9 @@ namespace BusinessServices
 
         public bool SearchCriminals(CriminalDTO criminal, string[] emails)
         {
-            Criminal criteria = Mapper.Map<Criminal>(criminal);
-            IEnumerable<Criminal> criminals = unitOfWork.CriminalRepository.GetAll().Where(x => x.Id == criminal.Id ||
-            x.Name.Equals(criminal.Name, StringComparison.InvariantCultureIgnoreCase) || x.NationalityID == x.NationalityID
-            || x.Sex.Equals((string)criminal.Sex) || x.HieghtMax > criminal.HieghtMax
-            || x.HieghtMin > x.HieghtMin || x.WeightMax > criminal.WeightMax
-            || x.WeightMin < x.WeightMin).ToList();
-            if (criminals!=null)
+            Criminal criteria = _mapper.Map<Criminal>(criminal);
+            IEnumerable<Criminal> criminals = unitOfWork.CriminalRepository.Search(criteria);
+            if (criminals.Count() != 0)
             {
                 var thread = new Thread(SendMailThread.Instace.DoWork);
                 thread.Start();
@@ -86,7 +83,7 @@ namespace BusinessServices
                             doc.Close();
                             byte[] bytes = memoryStream.ToArray();
                             memoryStream.Close();
-                            MailMessage mail = new MailMessage("NCD", email, "Criminal Record:" + criminal.Name, "");
+                            MailMessage mail = new MailMessage(new MailAddress("ar27111994@gmail.com").ToString(), new MailAddress(email).ToString(), "Criminal Record:" + criminal.Name, "");
                             mail.Attachments.Add(new Attachment(new MemoryStream(bytes), criminal.Name + ".pdf"));
                             SendMailThread.Instace.Messages.Enqueue(mail);
                         }

@@ -26,10 +26,7 @@
     @{
         if (Request.IsAuthenticated)
         {
-          using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
-          {
-                <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
-          }
+          @Html.ActionLink("Logout", "Logout", "Account")
         }
         else
         {

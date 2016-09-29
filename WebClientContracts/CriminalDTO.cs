@@ -13,8 +13,8 @@ namespace WebClientContracts
         public string Name { get; set; }
         [DataMember]
         [NotNullValidator]
-        [DomainValidator("M", "F", "T")]
-        public string Sex { get; set; }
+        [DomainValidator('M', 'F', 'T')]
+        public char Sex { get; set; }
         [DataMember]
         [NotNullValidator]
         public byte NationalityID { get; set; }

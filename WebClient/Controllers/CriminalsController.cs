@@ -30,7 +30,7 @@ namespace WebUIClient.Controllers
         {
             try
             {
-                ViewData["Roles"] = new SelectList(NationalityService.GetNationalities(),"Id","NationalityName");
+                ViewData["Nationalities"] = new SelectList(NationalityService.GetNationalities(),"Id","NationalityName");
                 return View();
             }
             catch (FaultException<WebUIClient.NationalityServiceReference.ValidationFault> ex)
@@ -47,29 +47,31 @@ namespace WebUIClient.Controllers
                                 validationResult.Tag));
                 }
 
-                return JavaScript("<script>alert(\"" + alert + "\")</script>");
+                return JavaScript("<script>alert(\"" + alert + "\");</script>");
             }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Search(WebUIClient.ViewModels.Criminal criminal, string[] emails)
+        public ActionResult Search(WebUIClient.ViewModels.Criminal criminalViewModel, string[] emails)
         {
             {
                 try
                 {
                     if (ModelState.IsValid)
                     {
-                        CriminalDTO criteria = _mapper.Map<CriminalDTO>(criminal);
+                        criminalViewModel.Sex = (char)criminalViewModel.gender;
+                        CriminalDTO criteria = _mapper.Map<CriminalDTO>(criminalViewModel);
                         if (CriminalService.SearchCriminals(criteria, emails))
                         {
-                            return JavaScript("<script>alert(\"Success! Results are bieng emailed to you.\")</script>");
+                            return JavaScript("<script>alert(\"Success! Results are bieng emailed to you.\");</script>");
                         }
                         else
                         {
-                            return JavaScript("<script>alert(\"Sorry! No Matching Records Found.\")</script>");
+                            return JavaScript("<script>alert(\"Sorry! No Matching Records Found.\");</script>");
                         }
                     }
+                    ViewData["Nationalities"] = new SelectList(NationalityService.GetNationalities(), "Id", "NationalityName");
                     return View();
                 }
                 catch (FaultException<WebUIClient.UserServiceReference.ValidationFault> ex)
@@ -86,7 +88,7 @@ namespace WebUIClient.Controllers
                                     validationResult.Tag));
                     }
 
-                    return JavaScript("<script>alert(\"" + alert + "\")</script>");
+                    return JavaScript("<script>alert(\"" + alert + "\");</script>");
 
                 }
 

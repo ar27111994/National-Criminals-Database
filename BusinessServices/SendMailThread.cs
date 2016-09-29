@@ -26,7 +26,7 @@ namespace BusinessServices
         {
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
             smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential("ar27111994@gmail.com", "MyIDIs1994");
+            smtp.Credentials = new System.Net.NetworkCredential(new MailAddress("ar27111994@gmail.com").ToString(), "MyIDIsar27111994");
             smtp.EnableSsl = true;
 
             while (!_shouldStop)

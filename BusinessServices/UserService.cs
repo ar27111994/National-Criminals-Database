@@ -40,6 +40,7 @@ namespace BusinessServices
             User regUser = _mapper.Map<User>(user);
             regUser.Email = Encrypt(regUser.Email);
             regUser.Password = Encrypt(regUser.Password);
+            regUser.LastLogin = DateTime.Now;
             unitOfWork.UserRepository.InsertOnSubmit(regUser);
             unitOfWork.Commit();
         }

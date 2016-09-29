@@ -9,7 +9,7 @@ using WebClientContracts;
 
 namespace BusinessServices.MapperConfig
 {
-    internal class DtoToEntityProfile : Profile
+    public class DtoToEntityProfile : Profile
     {
         public DtoToEntityProfile()
         {
