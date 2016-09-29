@@ -9,6 +9,7 @@ using WebUIClient.RoleServiceReference;
 using WebUIClient.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using WebUIClient.Auth;
 
 namespace WebClient.Tests.Controllers
 {
@@ -18,6 +19,7 @@ namespace WebClient.Tests.Controllers
         private IMapper _mapper;
         private IUserService _user;
         private IRoleService _role;
+        private IAuth _auth;
 
         [TestInitialize]
         public void Setup()
@@ -25,13 +27,14 @@ namespace WebClient.Tests.Controllers
             this._mapper = Resolve<IMapper>();
             this._user = Resolve<IUserService>();
             this._role = Resolve<IRoleService>();
+            this._auth = Resolve<IAuth>();
         }
 
         [TestMethod]
         public void Register()
         {
             // Arrange
-            AccountController controller = new AccountController(_user, _role, _mapper);
+            AccountController controller = new AccountController(_user, _role, _mapper, _auth);
 
             // Act
             ViewResult result = controller.Register() as ViewResult;
@@ -44,26 +47,40 @@ namespace WebClient.Tests.Controllers
         public void RegisterValidationTest()
         {
             var u = new User();
-            // Set some properties here
-            u = new User() { Email = "ar27111994gmail.com", Password = "1234567891344556666vvvtttttttttttttttttttttttttttttttttttfffffffffffffffffhhhhhhhhhhhkkkkkkkppppppoooooo",
-                Username = "ar27111994", LastLogin = DateTime.Now, RoleId = (byte)1 };
 
+            u = new User() { Email = "ar27111994@gmail.com", Password = "123456789", Username = "ar27111994", LastLogin = DateTime.Now, RoleId = (byte)1 };
             var context = new ValidationContext(u, null, null);
             var results = new List<ValidationResult>();
-            var isModelStateInValid = Validator.TryValidateObject(u, context, results, true);
-            Assert.IsFalse(isModelStateInValid);
-            u = new User() { Email = "ar27111994@gmail.com", Password = "123456789", Username = "ar27111994", LastLogin = DateTime.Now, RoleId = (byte)1 };
-            context = new ValidationContext(u, null, null);
-            results = new List<ValidationResult>();
             var isModelStateValid = Validator.TryValidateObject(u, context, results, true);
             Assert.IsTrue(isModelStateValid);
         }
 
         [TestMethod]
+        public void RegisterValidationFailedTest()
+        {
+            var u = new User();
+            // Set some properties here
+            u = new User()
+            {
+                Email = "ar27111994gmail.com",
+                Password = "1234567891344556666vvvtttttttttttttttttttttttttttttttttttfffffffffffffffffhhhhhhhhhhhkkkkkkkppppppoooooo",
+                Username = "ar27111994",
+                LastLogin = DateTime.Now,
+                RoleId = (byte)1
+            };
+
+            var context = new ValidationContext(u, null, null);
+            var results = new List<ValidationResult>();
+            var isModelStateInValid = Validator.TryValidateObject(u, context, results, true);
+            Assert.IsFalse(isModelStateInValid);
+        }
+
+
+        [TestMethod]
         public void RegisterPost()
         {
             // Arrange
-            AccountController controller = new AccountController(_user, _role, _mapper);
+            AccountController controller = new AccountController(_user, _role, _mapper, _auth);
 
             // Act
             User u = new User() { Email = "ar27111994@gmail.com", Password = "123456789", Username = "ar27111994", LastLogin = DateTime.Now, RoleId = (byte)1 };
@@ -77,7 +94,7 @@ namespace WebClient.Tests.Controllers
         public void Login()
         {
             // Arrange
-            AccountController controller = new AccountController(_user, _role, _mapper);
+            AccountController controller = new AccountController(_user, _role, _mapper, _auth);
 
             // Act
             ViewResult result = controller.Login() as ViewResult;
@@ -88,6 +105,17 @@ namespace WebClient.Tests.Controllers
 
         [TestMethod]
         public void LoginValidationTest()
+        {
+            var l = new Login();
+            l = new Login() { Email = "ar27111994@gmail.com", Password = "123456789" };
+            var context = new ValidationContext(l, null, null);
+            var results = new List<ValidationResult>();
+            var isModelStateValid = Validator.TryValidateObject(l, context, results, true);
+            Assert.IsTrue(isModelStateValid);
+        }
+
+        [TestMethod]
+        public void LoginValidationFailedTest()
         {
             var l = new Login();
             // Set some properties here
@@ -101,11 +129,6 @@ namespace WebClient.Tests.Controllers
             var results = new List<ValidationResult>();
             var isModelStateInValid = Validator.TryValidateObject(l, context, results, true);
             Assert.IsFalse(isModelStateInValid);
-            l = new Login() { Email = "ar27111994@gmail.com", Password = "123456789" };
-            context = new ValidationContext(l, null, null);
-            results = new List<ValidationResult>();
-            var isModelStateValid = Validator.TryValidateObject(l, context, results, true);
-            Assert.IsTrue(isModelStateValid);
         }
 
 
@@ -113,7 +136,7 @@ namespace WebClient.Tests.Controllers
         public void LoginPost()
         {
             // Arrange
-            AccountController controller = new AccountController(_user, _role, _mapper);
+            AccountController controller = new AccountController(_user, _role, _mapper, _auth);
 
             // Act
             Login l = new Login() { Email = "ar27111994@gmail.com", Password = "123456789" };
@@ -123,6 +146,35 @@ namespace WebClient.Tests.Controllers
             // Assert
             Assert.AreEqual("Search", result.RouteValues["action"]);
             Assert.AreEqual("Criminals", result.RouteValues["controller"]);
+        }
+
+        [TestMethod]
+        public void LoginFailedPost()
+        {
+            // Arrange
+            AccountController controller = new AccountController(_user, _role, _mapper, _auth);
+
+            // Act
+            Login l = new Login() { Email = "a94@hotil.com", Password = "123789" };
+            ViewResult result = controller.Login(loginViewModel: l) as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+
+        [TestMethod]
+        public void LogOut()
+        {
+            // Arrange
+            AccountController controller = new AccountController(_user, _role, _mapper, _auth);
+
+            // Act
+            RedirectToRouteResult result = controller.Logout() as RedirectToRouteResult;
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.Permanent);
+            // Assert
+            Assert.AreEqual("Index", result.RouteValues["action"]);
+            Assert.AreEqual("Home", result.RouteValues["controller"]);
+
         }
 
         [TestCleanup]

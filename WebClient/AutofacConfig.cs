@@ -8,6 +8,7 @@ using WebUIClient.NationalityServiceReference;
 using AutoMapper;
 using WebUIClient.MapperConfig;
 using System.ServiceModel;
+using WebUIClient.Auth;
 
 namespace WebUIClient
 {
@@ -70,7 +71,7 @@ namespace WebUIClient
             builder.RegisterType<NationalityServiceClient>().As<INationalityService>();
             // Register dependencies in controllers
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-
+            builder.RegisterType<Auth.Auth>().As<IAuth>();
             // Register dependencies in filter attributes
             builder.RegisterFilterProvider();
 

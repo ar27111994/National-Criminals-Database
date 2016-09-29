@@ -7,19 +7,22 @@ using WebUIClient.UserServiceReference;
 using System.ServiceModel;
 using System.Web.Security;
 using WebUIClient.RoleServiceReference;
+using WebUIClient.Auth;
 
 namespace WebUIClient.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IMapper _mapper;
+        private IAuth _auth;
         private IUserService UserService { get; set; }
         private IRoleService RoleService { get; set; }
-        public AccountController(IUserService usrsvc, IRoleService rolesvc, IMapper mapper)
+        public AccountController(IUserService usrsvc, IRoleService rolesvc, IMapper mapper, IAuth auth)
         {
             _mapper = mapper;
             UserService = usrsvc;
             RoleService = rolesvc;
+            _auth = auth;
         }
 
         [AllowAnonymous]
@@ -99,7 +102,7 @@ namespace WebUIClient.Controllers
                     bool Authenticated = UserService.Authenticate(loginViewModel.Password, loginViewModel.Email);
                     if (Authenticated)
                     {
-                        FormsAuthentication.SetAuthCookie(loginViewModel.Email, true);
+                        _auth.DoAuth(loginViewModel.Email, true);
                         return RedirectToAction("Search", "Criminals");
                     }
                 }
@@ -127,7 +130,7 @@ namespace WebUIClient.Controllers
         [Authorize]
         public ActionResult Logout()
         {
-            FormsAuthentication.SignOut();
+            _auth.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

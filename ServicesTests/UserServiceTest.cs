@@ -33,6 +33,13 @@ namespace ServicesTests
         [TestMethod]
         public void RegistrationValidationTest()
         {
+            var u = new UserDTO() { Email = "ar27111994@gmail.com", Password = "123456789", Username = "ar27111994", LastLogin = DateTime.Now, RoleId = (byte)1 };
+            var results = Validation.Validate(u);
+            Assert.IsTrue(results.IsValid);
+        }
+        [TestMethod]
+        public void RegistrationValidationFailedTest()
+        {
             var u = new UserDTO()
             {
                 Email = "ar27111994gmail.com",
@@ -43,10 +50,8 @@ namespace ServicesTests
             };
             var results = Validation.Validate(u);
             Assert.IsFalse(results.IsValid);
-            u = new UserDTO() { Email = "ar27111994@gmail.com", Password = "123456789", Username = "ar27111994", LastLogin = DateTime.Now, RoleId = (byte)1 };
-            results = Validation.Validate(u);
-            Assert.IsTrue(results.IsValid);
         }
+
 
         [TestMethod]
         public void LoginTest()
@@ -54,6 +59,14 @@ namespace ServicesTests
             bool Login = userService.Authenticate("123456789", "ar27111994@gmail.com");
             Assert.IsTrue(Login);
         }
+
+        [TestMethod]
+        public void LoginFailedTest()
+        {
+            bool Login = userService.Authenticate("12349", "ar27194@gil.com");
+            Assert.IsFalse(Login);
+        }
+
 
         [TestMethod]
         public void MapperTest()

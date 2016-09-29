@@ -42,7 +42,13 @@ namespace ServicesTests
             };
             string[] emails = new string[] { "ar27111994@gmail.com", "ar27111994@hotmail.com" };
             Assert.IsTrue(criminalService.SearchCriminals(c, emails));
-            c = new CriminalDTO()
+        }
+
+        [TestMethod]
+        public void CriminalSearchTestFailed()
+        {
+            string[] emails = new string[] { "ar27111994@gmail.com", "ar27111994@hotmail.com" };
+            CriminalDTO c = new CriminalDTO()
             {
                 Name = "bhjjiik",
                 AgeMax = 67,
@@ -62,20 +68,6 @@ namespace ServicesTests
         {
             CriminalDTO c = new CriminalDTO()
             {
-                Name = null,
-                AgeMax = 5999,
-                AgeMin = 56321,
-                HieghtMax = 0.4,
-                HieghtMin = 0.2,
-                NationalityID = 2,
-                Sex = 'R',
-                WeightMax = 787,
-                WeightMin = -98
-            };
-            var results = Validation.Validate(c);
-            Assert.IsFalse(results.IsValid);
-            c = new CriminalDTO()
-            {
                 Name = "asdfg",
                 AgeMax = 59,
                 AgeMin = 56,
@@ -88,9 +80,28 @@ namespace ServicesTests
             };
 
 
-            results = Validation.Validate(c);
+            var results = Validation.Validate(c);
             Console.WriteLine(results);
             Assert.IsTrue(results.IsValid);
+        }
+
+        [TestMethod]
+        public void CriminalValidationFailedTest()
+        {
+            CriminalDTO c = new CriminalDTO()
+            {
+                Name = null,
+                AgeMax = 5999,
+                AgeMin = 56321,
+                HieghtMax = 0.4,
+                HieghtMin = 0.2,
+                NationalityID = 2,
+                Sex = 'R',
+                WeightMax = 787,
+                WeightMin = -98
+            };
+            var results = Validation.Validate(c);
+            Assert.IsFalse(results.IsValid);
         }
 
 

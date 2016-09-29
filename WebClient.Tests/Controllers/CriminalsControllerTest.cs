@@ -59,24 +59,27 @@ namespace WebClient.Tests.Controllers
             var results = new List<ValidationResult>();
             var isModelStateInValid = Validator.TryValidateObject(c, context, results, true);
             Assert.IsFalse(isModelStateInValid);
-            c = new Criminal()
-            {
-                Name = "asdfg",
-                AgeMax = 59,
-                AgeMin = 56,
-                HieghtMax = 5.4,
-                HieghtMin = 5.2,
-                NationalityID = 2,
-                gender = Criminal.Gender.Male,
-                Sex = (char)Criminal.Gender.Male,
-                WeightMax = 78,
-                WeightMin = 76
-            };
+        }
 
-            context = new ValidationContext(c, null, null);
-            results = new List<ValidationResult>();
-            var isModelStateValid = Validator.TryValidateObject(c, context, results, true);
-            Assert.IsTrue(isModelStateValid);
+        [TestMethod]
+        public void CriminalVeiwModelValidationFailedTest()
+        {
+            var c = new Criminal()
+            {
+                Name = null,
+                AgeMax = 5999,
+                AgeMin = 56321,
+                HieghtMax = 0.4,
+                HieghtMin = 0.2,
+                NationalityID = 2,
+                Sex = 'R',
+                WeightMax = 787,
+                WeightMin = -98
+            };
+            var context = new ValidationContext(c, null, null);
+            var results = new List<ValidationResult>();
+            var isModelStateInValid = Validator.TryValidateObject(c, context, results, true);
+            Assert.IsFalse(isModelStateInValid);
         }
 
         [TestMethod]
@@ -103,7 +106,16 @@ namespace WebClient.Tests.Controllers
             // Act
             JavaScriptResult result = controller.Search(c, emails) as JavaScriptResult;
             Assert.AreEqual(result.Script, "<script>alert(\"Success! Results are bieng emailed to you.\");</script>");
-            c = new Criminal()
+        }
+
+        [TestMethod]
+        public void SearchPostFailed()
+        {
+            string[] emails = new string[] { "ar27111994@gmail.com", "ar27111994@hotmail.com" };
+
+            CriminalsController controller = new CriminalsController(_nationality, _criminal, _mapper);
+
+            var c = new Criminal()
             {
                 Name = "bhjjiik",
                 AgeMax = 67,
@@ -116,7 +128,7 @@ namespace WebClient.Tests.Controllers
                 WeightMax = 70,
                 WeightMin = 67
             };
-            result = controller.Search(c, emails) as JavaScriptResult;
+            JavaScriptResult result = controller.Search(c, emails) as JavaScriptResult;
 
             Assert.AreEqual(result.Script, "<script>alert(\"Sorry! No Matching Records Found.\");</script>");
 

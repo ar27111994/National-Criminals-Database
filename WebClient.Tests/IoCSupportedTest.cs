@@ -12,6 +12,8 @@ using WebUIClient.NationalityServiceReference;
 using WebUIClient.RoleServiceReference;
 using WebUIClient.UserServiceReference;
 using WebUIClient.MapperConfig;
+using WebUIClient.Auth;
+using WebClient.Tests;
 
 namespace WebClients.Tests
 {
@@ -75,6 +77,7 @@ namespace WebClients.Tests
 
             builder.RegisterType<NationalityServiceClient>().As<INationalityService>();
 
+            builder.RegisterType<AuthTest>().As<IAuth>();
 
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {
