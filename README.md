@@ -2,7 +2,7 @@
 A WCF Project explaining ASP.NET MVC and WCF best Practices using N-Layered Architecture. Here is the brief summary of every Project in the Solution Repository.
 
 # BusinessServices:-
-A WCF Class Library Project Containing All the Service Interfaces and their respective Implementations. In Addition, this Project uses Automapper to Map Database Entities to Data Transfer Objects and Vise Versa.Therefore, this project also uses **Autofac.Wcf** for **Automapper Constructor Injection** in Service Classess.
+A WCF Class Library Project Containing All the Service Interfaces and their respective Implementations. In Addition, this Project uses Automapper to Map Database Entities to Data Transfer Objects and Vise Versa. Therefore, this project also uses **Autofac.Wcf** for **Automapper Constructor Injection** in Service Classess.
 
 **Referenced Projects**: WebClientContracts, Persistence.
 
