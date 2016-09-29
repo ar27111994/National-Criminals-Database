@@ -74,7 +74,7 @@ namespace ServicesTests
             UserDTO u = new UserDTO() { Email = "ar27111994@gmail.com", Password = "123456789", Username = "ar27111994", LastLogin = DateTime.Now, RoleId = 1 };
             User regUser = _mapper.Map<User>(u);
         }
-
+    
         [TestCleanup]
         public void TearDown()
         {
