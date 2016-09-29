@@ -12,7 +12,7 @@ This is the Data Access Layer using **Linq to SQL** as a Micro-ORM. This is abst
 A Project for Holding Data Transfer Object Classess. Moreover, this project uses ``Microsoft.Practices.EnterpriseLibrary.Validation`` for Validation of DTOs using WCF Service Calls. This project as a bridge between **BusinessServices** and **WebUIClient** Projects.
 
 # NCDServices:-
-A WCF Services Host Project. It uses **Autofac.WCF.Integration** to inject Required Parameters in Services and to Register Service Interfaces with the Respective Implementations. As this Project uses **Global.asax** to Register Autofac Container at **Application_Start** Event, Hence IIS is the best platform to Publish this project to. Moreover, each service has Different **EndPoints** for **SOAP and REST (Both JSON and XML)**. 
+A WCF Services Host Project. It uses **Autofac.WCF.Integration** to inject Required Parameters in Services and to Register Service Interfaces with their Respective Implementations. As this Project uses **Global.asax** to Register Autofac Container at **Application_Start** Event, Hence IIS is the best platform to Publish this project to. Moreover, each service has Different **EndPoints** for **SOAP and REST (Both JSON and XML)**. 
 
 
 #WebUIClient:
