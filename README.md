@@ -17,7 +17,7 @@ A WCF Services Host Project. It uses **Autofac.WCF.Integration** to inject Requi
 
 
 #WebUIClient:
-The Client for Consuming Web Services hosted on IIS. It also uses ``Microsoft.Practices.EnterpriseLibrary.Validation`` to handle Exceptions that can occur on Validation Fault of a DTO which is being transferred to / from WCF Services.
+An ``ASP.NET MVC 5 Client`` for Consuming Web Services hosted on IIS. It also uses ``Microsoft.Practices.EnterpriseLibrary.Validation`` to handle Exceptions that can occur on Validation Fault of a DTO which is being transferred to / from WCF Services.
 
 **Referenced Project**: WebClientContracts.
 
