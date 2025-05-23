@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"commitplease": "^2.2.3",
-		"grunt": "^0.4.4",
+		"grunt": "^1.6.1",
 		"grunt-contrib-compress": "^0.7",
 		"grunt-contrib-concat": "^0.3",
 		"grunt-contrib-copy": "^0.5",
